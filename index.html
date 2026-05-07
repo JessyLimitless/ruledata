@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>온톨로지의 진짜 무게 — 4층 구조</title>
+<title>RuleData — 온톨로지의 진짜 무게</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -30,16 +30,40 @@ body { font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; over
   h1, h2, h3 { word-break: keep-all; }
   table { font-size: 0.8rem; }
 }
+/* Routing */
+[data-page] { display: none; }
+[data-page].is-active { display: block; }
+.route-link { transition: all 0.2s; }
+.route-link.active { background: #0f172a; color: #fff; }
+.route-link.active:hover { background: #1e293b; }
+@keyframes page-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+[data-page].is-active { animation: page-fade 0.4s ease-out; }
 </style>
 </head>
 <body class="bg-slate-100">
 
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- STICKY NAV                                           -->
+<!-- ═══════════════════════════════════════════════════ -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between gap-2">
+    <a href="#why" class="flex items-center gap-2 font-black text-slate-900 text-sm md:text-base shrink-0">
+      <span class="w-7 h-7 bg-gradient-to-br from-amber-500 to-red-500 rounded-md flex items-center justify-center text-white text-xs">R</span>
+      <span class="hidden sm:inline">RuleData</span>
+    </a>
+    <nav class="flex gap-1 sm:gap-2 text-xs sm:text-sm">
+      <a href="#why" data-route="why" class="route-link px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-slate-600 font-medium">왜 온톨로지인가</a>
+      <a href="#how" data-route="how" class="route-link px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-slate-600 font-medium">어떻게 작동하나</a>
+    </nav>
+  </div>
+</header>
+
 <div class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12 space-y-12">
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!-- HERO                                                 -->
+  <!-- HERO  (Page 1)                                       -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="text-center fade-in">
+  <section data-page="why" class="text-center fade-in">
     <div class="mono text-xs text-amber-600 tracking-[0.3em] mb-4">JOURNEY OF SKEPTICISM → TRUTH</div>
     <h1 class="text-4xl sm:text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] md:leading-[1.05] mb-6">
       "추론은 <span class="gradient-text">if + search</span>"<br>
@@ -55,7 +79,7 @@ body { font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; over
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- SECTION 01: 추론 해체                                 -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="bg-white rounded-3xl shadow-sm p-8 md:p-12">
+  <section data-page="why" class="bg-white rounded-3xl shadow-sm p-8 md:p-12">
     <div class="text-center mb-10">
       <div class="mono text-xs text-slate-500 tracking-[0.2em] mb-2">STAGE 01 — 의심의 시작</div>
       <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-3">"추론"을 해체하면</h2>
@@ -107,7 +131,7 @@ body { font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; over
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- SECTION 02: 합성                                      -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white">
+  <section data-page="why" class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white">
     <div class="text-center mb-10">
       <div class="mono text-xs text-amber-400 tracking-[0.2em] mb-2">STAGE 02 — 첫 차이</div>
       <h2 class="text-3xl md:text-5xl font-black mb-3">합성(Composition)</h2>
@@ -193,7 +217,7 @@ body { font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; over
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- SECTION 03: 누가 쓰나                                  -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="bg-white rounded-3xl shadow-sm p-8 md:p-12">
+  <section data-page="why" class="bg-white rounded-3xl shadow-sm p-8 md:p-12">
     <div class="text-center mb-8">
       <div class="mono text-xs text-slate-500 tracking-[0.2em] mb-2">STAGE 03 — 두 번째 차이</div>
       <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-3">룰을 <span class="gradient-text">누가</span> 쓸 수 있는가</h2>
@@ -239,7 +263,7 @@ body { font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; over
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- SECTION 04: 인정 매트릭스                              -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white">
+  <section data-page="why" class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white">
     <div class="text-center mb-8">
       <div class="mono text-xs text-amber-400 tracking-[0.2em] mb-2">STAGE 04 — 잠정 결론</div>
       <h2 class="text-3xl md:text-4xl font-black mb-3">"당신 직관이 맞다"</h2>
@@ -273,7 +297,7 @@ body { font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; over
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- TRANSITION                                           -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="text-center py-6">
+  <section data-page="why" class="text-center py-6">
     <div class="inline-block">
       <div class="mono text-xs text-amber-600 tracking-[0.4em] mb-3">PLOT TWIST</div>
       <div class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-2">
@@ -287,7 +311,7 @@ body { font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; over
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- ★ SECTION 05: THE 4-LAYER STRUCTURE (CLIMAX)         -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 md:p-12 text-white">
+  <section data-page="why" class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 md:p-12 text-white">
     <div class="text-center mb-12">
       <div class="mono text-xs text-amber-400 tracking-[0.3em] mb-3">★ STAGE 05 — THE REVEAL</div>
       <h2 class="text-4xl md:text-6xl font-black mb-4 leading-tight">
@@ -383,7 +407,7 @@ body { font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; over
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- ★ SECTION 06: ONTOLOGICAL ENGINEERING WORK           -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="bg-white rounded-3xl shadow-sm p-8 md:p-12">
+  <section data-page="why" class="bg-white rounded-3xl shadow-sm p-8 md:p-12">
     <div class="text-center mb-10">
       <div class="mono text-xs text-slate-500 tracking-[0.2em] mb-2">★ STAGE 06 — 진짜 작업</div>
       <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-3">
@@ -469,9 +493,9 @@ body { font-family: Inter, sans-serif; -webkit-font-smoothing: antialiased; over
   </section>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!-- ★ SECTION 07: SCENARIO WALKTHROUGH                   -->
+  <!-- ★ SECTION 07: SCENARIO WALKTHROUGH (Page 2)          -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="bg-white rounded-3xl shadow-sm p-8 md:p-12">
+  <section data-page="how" class="bg-white rounded-3xl shadow-sm p-8 md:p-12">
     <div class="text-center mb-10">
       <div class="mono text-xs text-slate-500 tracking-[0.2em] mb-2">★ STAGE 07 — 진짜 작동 모습</div>
       <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-3">
@@ -766,7 +790,7 @@ notify: [<span class="text-amber-300">관할소방서</span>,<br>
   <!-- ═══════════════════════════════════════════════════ -->
   <!-- ★ SECTION 08: FINAL POSITION                         -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="bg-gradient-to-br from-amber-50 via-white to-blue-50 rounded-3xl p-8 md:p-12 border-2 border-amber-200">
+  <section data-page="why" class="bg-gradient-to-br from-amber-50 via-white to-blue-50 rounded-3xl p-8 md:p-12 border-2 border-amber-200">
     <div class="text-center mb-10">
       <div class="mono text-xs text-slate-500 tracking-[0.2em] mb-2">★ STAGE 08 — 최종 포지션</div>
       <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-3">이름의 무게가 <span class="gradient-text">정당한 이유</span></h2>
@@ -815,13 +839,64 @@ notify: [<span class="text-amber-300">관할소방서</span>,<br>
   </section>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!-- FOOTER                                              -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section class="text-center py-6 text-sm text-slate-500">
-    PATOS 데모 보강 · 온톨로지 4층 구조의 정직한 해체
+  <!-- CTA: PAGE 1 → PAGE 2                                 -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section data-page="why" class="text-center py-4">
+    <div class="mono text-xs text-slate-500 tracking-widest mb-3">NEXT</div>
+    <a href="#how" class="inline-flex items-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-6 sm:px-8 py-4 rounded-2xl font-bold text-base sm:text-lg transition shadow-lg hover:shadow-xl">
+      <span>어떻게 작동하나 — 무안 한옥마을 사례</span>
+      <span class="text-amber-400">→</span>
+    </a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- CTA: PAGE 2 → PAGE 1                                 -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section data-page="how" class="text-center py-4">
+    <div class="mono text-xs text-slate-500 tracking-widest mb-3">PREV</div>
+    <a href="#why" class="inline-flex items-center gap-3 bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-900 px-6 sm:px-8 py-4 rounded-2xl font-bold text-base sm:text-lg transition shadow-sm hover:shadow-md">
+      <span class="text-amber-600">←</span>
+      <span>왜 온톨로지인가 — 4층 구조</span>
+    </a>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- FOOTER (always visible)                              -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section class="text-center py-6 text-sm text-slate-500 border-t border-slate-200">
+    RuleData · 온톨로지 4층 구조의 정직한 해체 ·
+    <a href="https://github.com/JessyLimitless/ruledata" class="hover:text-slate-900 transition">GitHub</a>
   </section>
 
 </div>
+
+<script>
+(function() {
+  const VALID_ROUTES = ['why', 'how'];
+  function showPage(name) {
+    if (!VALID_ROUTES.includes(name)) name = 'why';
+    document.querySelectorAll('[data-page]').forEach(function(el) {
+      el.classList.toggle('is-active', el.dataset.page === name);
+    });
+    document.querySelectorAll('[data-route]').forEach(function(el) {
+      el.classList.toggle('active', el.dataset.route === name);
+    });
+    document.title = (name === 'how')
+      ? 'RuleData — 어떻게 작동하나'
+      : 'RuleData — 왜 온톨로지인가';
+  }
+  function route() {
+    const name = (location.hash || '#why').replace('#', '').toLowerCase();
+    showPage(name);
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  }
+  window.addEventListener('hashchange', route);
+  document.addEventListener('DOMContentLoaded', route);
+  // Run immediately if DOM already parsed
+  if (document.readyState !== 'loading') route();
+})();
+</script>
 
 </body>
 </html>
